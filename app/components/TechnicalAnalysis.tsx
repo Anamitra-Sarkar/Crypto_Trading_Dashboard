@@ -99,21 +99,21 @@ export default function TechnicalAnalysis({ asset }: TechnicalAnalysisProps) {
       const chart = createChart(chartContainerRef.current, {
         layout: {
           background: { type: ColorType.Solid, color: 'transparent' },
-          textColor: 'rgba(255, 255, 255, 0.7)',
+          textColor: 'rgb(15 23 42 / 0.8)',
         },
         grid: {
-          vertLines: { color: 'rgba(43, 43, 67, 0.5)' },
-          horzLines: { color: 'rgba(43, 43, 67, 0.5)' },
+          vertLines: { color: 'rgb(226 232 240)' },
+          horzLines: { color: 'rgb(226 232 240)' },
         },
         width: chartContainerRef.current.clientWidth,
         height: 300,
         timeScale: {
           timeVisible: true,
-          borderColor: 'rgba(43, 43, 67, 0.5)',
+          borderColor: 'rgb(226 232 240)',
         },
         // @ts-ignore - Compatibility with current library version
         rightPriceScale: {
-          borderColor: 'rgba(43, 43, 67, 0.8)',
+          borderColor: 'rgb(226 232 240)',
           scaleMargins: {
             top: 0.1,
             bottom: 0.1,
@@ -123,14 +123,14 @@ export default function TechnicalAnalysis({ asset }: TechnicalAnalysisProps) {
           mode: 'Normal',
           vertLine: {
             width: 1,
-            color: 'rgba(224, 227, 235, 0.5)',
+            color: 'rgb(148 163 184)',
             style: 0,
           },
           horzLine: {
             width: 1,
-            color: 'rgba(224, 227, 235, 0.5)',
+            color: 'rgb(148 163 184)',
             style: 0,
-            labelBackgroundColor: 'rgba(32, 38, 46, 0.9)',
+            labelBackgroundColor: 'rgb(248 250 252)',
           },
         },
         handleScroll: {
@@ -141,7 +141,7 @@ export default function TechnicalAnalysis({ asset }: TechnicalAnalysisProps) {
       chartRef.current = chart;
 
       const mainSeries = chart.addLineSeries({
-        color: 'rgba(76, 175, 80, 0.5)',
+        color: 'rgb(37 99 235 / 0.7)',
         lineWidth: 2,
         // @ts-ignore - Compatibility with current library version
         priceLineVisible: false,

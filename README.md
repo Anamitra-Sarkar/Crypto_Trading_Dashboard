@@ -50,7 +50,7 @@ A comprehensive, AI-powered dashboard for cryptocurrency trading analysis, marke
 ### AI & Data Analysis
 - **TensorFlow.js**: Machine learning library for predictive models
 - **Technical Indicators**: Library for financial technical analysis
-- **Google Gemini API**: Advanced AI for the trading assistant
+- **Groq API (Llama 3)**: Low-latency LLM for the trading assistant
 
 ### APIs
 - **CoinGecko API**: Comprehensive cryptocurrency market data
@@ -79,12 +79,11 @@ A comprehensive, AI-powered dashboard for cryptocurrency trading analysis, marke
    ```
 
 3. **Set up environment variables**
-   Create a `.env.local` file in the root directory with the following variables:
+   Copy `.env.example` to `.env.local` and fill in values:
    ```
    NEXT_PUBLIC_COINGECKO_API_KEY=your_coingecko_api_key
    NEXT_PUBLIC_NEWSDATA_API_KEY=your_newsdata_api_key
-   NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_api_key
-   # Add other API keys as needed
+   GROQ_API_KEY=your_groq_api_key
    ```
 
 4. **Start the development server**
@@ -144,7 +143,7 @@ The dashboard integrates with several external APIs:
 
 - **CoinGecko API**: For cryptocurrency market data, prices, and historical charts
 - **News APIs**: For aggregating relevant cryptocurrency news
-- **Google Gemini API**: For AI-powered trading assistance and natural language processing
+- **Groq API (Llama 3)**: For AI-powered trading assistance and natural language processing
 
 ## 🧪 Testing
 

@@ -1,10 +1,13 @@
-import './globals.css';
-import type { Metadata } from 'next';
+import "./globals.css";
+
+import type { Metadata } from "next";
+
 import { ThemeProvider } from "@/components/theme-provider";
+import { SiteHeader } from "@/components/site-header";
 
 export const metadata: Metadata = {
-  title: 'Crypto Trading Assistant',
-  description: 'AI-powered cryptocurrency trading assistant with real-time insights',
+  title: "Crypto Dashboard",
+  description: "Cryptocurrency market overview, analysis, news, and AI trading assistant",
 };
 
 export default function RootLayout({
@@ -14,14 +17,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
+      <body className="min-h-screen bg-background text-foreground antialiased">
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+          <div className="min-h-screen">
+            <SiteHeader />
+            <main className="mx-auto w-full max-w-7xl px-4 py-8">{children}</main>
+          </div>
         </ThemeProvider>
       </body>
     </html>
