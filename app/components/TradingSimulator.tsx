@@ -420,7 +420,7 @@ export default function TradingSimulator({ asset }: TradingSimulatorProps) {
                           <div className="flex items-center justify-between">
                             <div className="space-y-1">
                               <div className="flex items-center gap-2">
-                                <Badge className={position.type === 'long' ? 'bg-blue-500/10 text-blue-500' : 'bg-purple-500/10 text-purple-500'}>
+                                <Badge className={position.type === 'long' ? 'bg-blue-500/10 text-blue-600' : 'bg-slate-500/10 text-slate-600'}>
                                   {position.type.toUpperCase()}
                                 </Badge>
                                 <span className="font-medium">{position.asset.symbol.toUpperCase()}</span>

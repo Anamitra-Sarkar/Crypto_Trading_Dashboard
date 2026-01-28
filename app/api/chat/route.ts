@@ -1,35 +1,36 @@
-import { NextResponse } from 'next/server';
-import { generateGeminiResponse } from '@/lib/gemini';
+import { NextResponse } from "next/server";
+import { generateGroqResponse, GroqError } from "@/lib/groq";
 
 export async function POST(req: Request) {
   try {
-    const { message } = await req.json();
+    const { message } = (await req.json()) as { message?: string };
 
     if (!message) {
-      return NextResponse.json(
-        { error: 'Message is required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "Message is required" }, { status: 400 });
     }
 
-    // Add crypto trading context to the prompt
     const prompt = `You are a cryptocurrency trading assistant. Help the user with their query about crypto trading, market analysis, and investment strategies. Provide clear, concise responses without using asterisks (*). Format lists with bullet points (•) instead. Here's the user's message: ${message}`;
 
-    const response = await generateGeminiResponse(prompt);
+    const response = await generateGroqResponse(prompt);
 
-    // Clean up the response by replacing asterisks with bullet points
     const cleanedResponse = response
-      .replace(/\*\*/g, '') // Remove double asterisks
-      .replace(/\*/g, '•')  // Replace single asterisks with bullet points
+      .replace(/\*\*/g, "")
+      .replace(/\*/g, "•")
       .trim();
 
     return NextResponse.json({ response: cleanedResponse });
   } catch (error) {
-    console.error('Chat API error:', error);
-    const errorMessage = error instanceof Error ? error.message : 'Failed to generate response';
-    return NextResponse.json(
-      { error: errorMessage },
-      { status: 500 }
-    );
+    console.error("Chat API error:", error);
+
+    const status =
+      error instanceof GroqError &&
+      (error.type === "RATE_LIMIT" || error.type === "TIMEOUT" || error.type === "UPSTREAM")
+        ? 503
+        : 500;
+
+    const errorMessage =
+      error instanceof Error ? error.message : "Failed to generate response";
+
+    return NextResponse.json({ error: errorMessage }, { status });
   }
 }
